@@ -1,38 +1,218 @@
-.App {
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-family: "Berkshire Swash", cursive;
+  letter-spacing: 0.5px;
+}
+
+.hero-body {
+  max-height: 100%;
+}
+
+.search-form {
+  width: 50%;
+  margin-right: 20px;
+}
+
+/* Search bar and button */
+.top-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.container {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.image-container {
+  display: inline-block;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* Text */
+.attribution {
   color: white;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.single-image {
+  margin: 7px;
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
 }
 
-@keyframes App-logo-spin {
+.image-container:hover .single-image {
+  opacity: 0.85;
+  transition: 0.5s;
+}
+
+.attribution:hover {
+  display: block;
+}
+
+.single-image {
+  margin: 7px;
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+}
+
+.single-image:hover {
+  opacity: 0.7;
+  transition: 0.5s;
+}
+
+/* ------------ Loader ------------ */
+
+.loader-dots {
+  font-size: 20px;
+  position: relative;
+  width: 4em;
+  height: 1em;
+  margin: 10px auto;
+}
+
+.loader-dot {
+  display: block;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.5em;
+  background: #555;
+  position: absolute;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.loader-dot:nth-child(1),
+.loader-dot:nth-child(2) {
+  left: 0;
+}
+
+.loader-dot:nth-child(3) {
+  left: 1.5em;
+}
+
+.loader-dot:nth-child(4) {
+  left: 3em;
+}
+
+@keyframes reveal {
   from {
-    transform: rotate(0deg);
+    transform: scale(0.001);
   }
+
   to {
-    transform: rotate(360deg);
+    transform: scale(1);
+  }
+}
+
+@keyframes slide {
+  to {
+    transform: translateX(1.5em);
+  }
+}
+
+.loader-dot:nth-child(1) {
+  animation-name: reveal;
+}
+
+.loader-dot:nth-child(2),
+.loader-dot:nth-child(3) {
+  animation-name: slide;
+}
+
+.loader-dot:nth-child(4) {
+  animation-name: reveal;
+  animation-direction: reverse;
+}
+
+/* ------------ MEDIA QUERIES ------------ */
+
+/* Small screens */
+@media screen and (max-width: 767px) {
+  .top-content {
+    flex-direction: column;
+    margin: 30px 0;
+  }
+
+  .button {
+    margin-top: 20px;
+  }
+
+  .search-form {
+    width: 100%;
+    margin: auto;
+  }
+
+  .attribution {
+    bottom: 33px;
+    left: 20px;
+  }
+
+  .single-image {
+    margin: 0 0 15px 0;
+    width: 100%;
+  }
+
+  .title.is-2 {
+    font-size: 2rem;
+  }
+
+  .hero-body {
+    padding-top: 2rem;
+  }
+}
+
+/* Tablets */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .single-image {
+    height: 340px;
+    width: 340px;
+  }
+
+  .title.is-2 {
+    margin-bottom: 30px;
+  }
+}
+
+/* Devices larger than tablets (smaller) */
+@media screen and (min-width: 992px) and (max-width: 1599px) {
+  .attribution {
+    display: none;
+  }
+
+  .image-container:hover .attribution {
+    display: block;
+  }
+}
+
+/* Devices larger than tablets (larger) */
+@media screen and (min-width: 1600px) {
+  .attribution {
+    display: none;
+  }
+
+  .image-container:hover .attribution {
+    display: block;
+  }
+
+  .single-image {
+    /* Larger than regular size */
+    height: 400px;
+    width: 400px;
   }
 }
