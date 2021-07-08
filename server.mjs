@@ -1,7 +1,5 @@
 import nodeFetch from "node-fetch";
 import { createApi } from "unsplash-js";
-// const Unsplash = require('unsplash-js').default; // There are multiple exports -- we want the default
-// const toJson = require('unsplash-js').toJson;
 import express from "express";
 
 const unsplash = createApi({
